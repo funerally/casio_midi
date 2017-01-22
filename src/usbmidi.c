@@ -330,6 +330,7 @@ uint8_t BufferIn(uint32_t byte) {
 	if (buffer.read == next)
 		return FAIL;
 	buffer.data[buffer.write] = byte;
+	// buffer.data[buffer.write & BUFFER_MASK] = byte; // more secure
 	buffer.write = next;
 	return SUCCESS;
 }
